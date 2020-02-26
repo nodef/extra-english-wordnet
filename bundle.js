@@ -6,8 +6,8 @@ const os = require('os');
 
 // Global variables.
 const ORG = 'nodef';
-const PACKAGE = 'extra-number';
-const STANDALONE = 'number';
+const PACKAGE = 'extra-wordnet.english';
+const STANDALONE = 'wordnet_english';
 const BIN = (cp.execSync('npm prefix -g')+'/bin/').replace('\n', '');
 const STDIO = [0, 1, 2];
 const EOL = os.EOL;
