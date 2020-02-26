@@ -1,6 +1,5 @@
 [WordNet®] is a large lexical database of English. This package includes
-data describing all parts-of-speech in [English WordNet] for use with
-[WordNet container].
+data describing all parts-of-speech, for use with [WordNet container].
 
 > Refer to [WordNet container] for usage examples.<br>
 > All data has been transformed from [WordNet 3.1].
@@ -60,7 +59,6 @@ const ENGLISH = require('extra-wordnet.english');
 [VERB_FRAMES]: https://github.com/nodef/extra-wordnet.english/wiki/VERB_FRAMES
 [WordNet]: https://wordnet.princeton.edu/wordnet/
 [WordNet®]: https://wordnet.princeton.edu/wordnet/
-[English WordNet]: https://wordnet.princeton.edu/wordnet/
 [WordNet 3.1]: http://wordnetweb.princeton.edu/perl/webwn
 [WordNet container]: https://www.npmjs.com/package/extra-wordnet
 [extra-wordnet.english.min]: https://www.npmjs.com/package/extra-wordnet.english.min
