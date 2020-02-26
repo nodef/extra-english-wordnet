@@ -6,7 +6,7 @@ const os = require('os');
 
 // Global variables.
 const ORG = 'nodef';
-const PACKAGE = 'extra-wordnet.english';
+const PACKAGE_ROOT = 'extra-wordnet.english';
 const STANDALONE = 'wordnet_english';
 const BIN = (cp.execSync('npm prefix -g')+'/bin/').replace('\n', '');
 const stdio = [0, 1, 2];
@@ -136,7 +136,7 @@ function scatterPackage(pth, o) {
 // Minifies JS file in place.
 function minifyJs(pth) {
   console.log('minify: ', pth);
-  cp.execSync(BIN+`browserify ${pth} -s ${STANDALONE} -o ${pth}.tmp`, {stdio});
+  cp.execSync(BIN+`browserify ${pth} -s ${o.standalone} -o ${pth}.tmp`, {stdio});
   cp.execSync(BIN+`uglifyjs -c -m -o ${pth} ${pth}.tmp`, {stdio});
   cp.execSync(`rm ${pth}.tmp`, {stdio});
 }
@@ -180,8 +180,8 @@ function minifyPackage(pth, o) {
 // Run on shell.
 async function main(a) {
   console.log('main:', a);
-  console.log({BIN, ORG, PACKAGE_ROOT});
-  var o = {org: ORG, package_root: PACKAGE_ROOT};
+  console.log({BIN, ORG, PACKAGE_ROOT, STANDALONE});
+  var o = {org: ORG, package_root: PACKAGE_ROOT, standalone: STANDALONE};
   for(var f of fs.readdirSync('scripts')) {
     if(path.extname(f)!=='.js') continue;
     if(f.startsWith('_')) continue;
