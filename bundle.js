@@ -188,7 +188,7 @@ async function main(a) {
     if(f.startsWith('_')) continue;
     if(f==='index.js') continue;
     var pth = path.join('scripts', f);
-    var tmp = scatterPackage(pth, o);
+    var tmp = scatterPackage(pth, Object.assign({}, o));
     cp.execSync('npm publish', {cwd: tmp, stdio});
     cp.execSync(`rm -rf ${tmp}`);
   }
