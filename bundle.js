@@ -136,7 +136,7 @@ function scatterPackage(pth, o) {
 }
 
 // Minifies JS file in place.
-function minifyJs(pth) {
+function minifyJs(pth, o) {
   console.log('minify: ', pth);
   cp.execSync(BIN+`browserify ${pth} -s ${o.standalone} -o ${pth}.tmp`, {stdio});
   cp.execSync(BIN+`uglifyjs -c -m -o ${pth} ${pth}.tmp`, {stdio});
