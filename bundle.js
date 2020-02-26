@@ -14,9 +14,9 @@ const EOL = os.EOL;
 
 
 
-function toSnakeCase(x) {
-  if(x.search(/[a-z]/)<0) return x.replace(/[^A-Za-z0-9]/, '-').toLowerCase();
-  return x.replace(/[^A-Za-z0-9]|[^A-Za-z0-9]?([A-Z])/g, '-$1').toLowerCase();
+function toSnakeCase(x, sep='-') {
+  if(x.search(/[a-z]/)<0) return x.replace(/[^A-Za-z0-9]/, sep).toLowerCase();
+  return x.replace(/[^A-Za-z0-9]|[^A-Za-z0-9]?([A-Z])/g, sep+'$1').toLowerCase();
 }
 
 function pathSplit(x) {
@@ -183,7 +183,7 @@ function minifyPackage(pth, o) {
 async function main(a) {
   console.log('main:', a);
   console.log({BIN, ORG, PACKAGE_ROOT, STANDALONE});
-  var o = {org: ORG, package_root: PACKAGE_ROOT, standalone: STANDALONE};
+  var o = {org: ORG, package_root: PACKAGE_ROOT};
   for(var f of fs.readdirSync('scripts')) {
     if(path.extname(f)!=='.js') continue;
     if(f.startsWith('_')) continue;
@@ -191,8 +191,10 @@ async function main(a) {
     var pth = path.join('scripts', f);
     var tmp = scatterPackage(pth, o);
     cp.execSync('npm publish', {cwd: tmp, stdio});
+    var standalone = toSnakeCase(STANDALONE+'_'+f.replace(/\..*/, ''), '_');
+    minifyPackage(tmp, Object.assign({standalone}, o));
+    cp.execSync('npm publish', {cwd: tmp, stdio});
     cp.execSync(`rm -rf ${tmp}`);
   }
-  // pkgMinify();
 }
 if(require.main===module) main(process.argv);
