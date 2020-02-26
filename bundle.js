@@ -148,7 +148,7 @@ function minifyReadme(pth, o) {
   console.log('minifyReadme: ', pth, o);
   var d = fs.readFileSync(pth, 'utf8');
   d = d.replace(o.note_minified||/^> .*?minified.*$/m, '');
-  d = d.replace(o.note_top||/\s+```/, EOL+'<br>'+
+  d = d.replace(o.note_top||/\s+```/, '<br>'+EOL+
     `> This is browserified, minified version of [${o.package}].<br>`+EOL+
     `> It is exported as global variable **${o.standalone}**.<br>`+EOL+
     `> CDN: [unpkg], [jsDelivr].`+EOL+EOL+
