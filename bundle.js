@@ -107,6 +107,7 @@ function scatterJson(pth, o) {
 // Scatter a file as a package.
 function scatterPackage(pth, o) {
   console.log('scatterPackage:', pth, o);
+  var o = Object.assign({}, o)
   var tmp = tempy.directory();
   var [dir, fil, ext] = pathSplit(pth);
   var src = packageRoot(pth);
@@ -188,7 +189,7 @@ async function main(a) {
     if(f.startsWith('_')) continue;
     if(f==='index.js') continue;
     var pth = path.join('scripts', f);
-    var tmp = scatterPackage(pth, Object.assign({}, o));
+    var tmp = scatterPackage(pth, o);
     cp.execSync('npm publish', {cwd: tmp, stdio});
     cp.execSync(`rm -rf ${tmp}`);
   }
