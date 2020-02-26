@@ -174,14 +174,16 @@ function minifyJson(pth, o) {
   d.scripts = {test: 'exit'};
   d.devDependencies = undefined;
   fs.writeFileSync(pth, JSON.stringify(d, null, 2));
+  return d.name.replace(/\.min$/, '');
 }
 
 // Minifies package in place.
 function minifyPackage(pth, o) {
   console.log('minifyPackage: ', pth, o);
-  minifyJs(path.join(pth, 'index.js'), o);
+  var o = Object.assign({}, o);
+  o.package = minifyJson(path.join(pth, 'package.json'), o);
   minifyReadme(path.join(pth, 'README.md'), o);
-  minifyJson(path.join(pth, 'package.json'), o);
+  minifyJs(path.join(pth, 'index.js'), o);
 }
 
 // Run on shell.
