@@ -107,7 +107,7 @@ function scatterJson(pth, o) {
 // Scatter a file as a package.
 function scatterPackage(pth, o) {
   console.log('scatterPackage:', pth, o);
-  var o = Object.assign({}, o)
+  var o = Object.assign({}, o);
   var tmp = tempy.directory();
   var [dir, fil, ext] = pathSplit(pth);
   var src = packageRoot(pth);
