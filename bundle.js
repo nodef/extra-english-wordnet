@@ -15,8 +15,11 @@ const EOL = os.EOL;
 
 
 function toSnakeCase(x, sep='-') {
-  if(x.search(/[a-z]/)<0) return x.replace(/[^A-Za-z0-9\.]/, sep).toLowerCase();
-  return x.replace(/[^A-Za-z0-9\.]|[^A-Za-z0-9\.]?([A-Z])/g, sep+'$1').toLowerCase();
+  x = x.replace(/([a-z0-9])([A-Z])/g, '$1'+sep+'$2');
+  x = x.replace(/[^A-Za-z0-9\.]+/g, sep);
+  x = x.replace(/^[^A-Za-z0-9\.]+/, '');
+  x = x.replace(/[^A-Za-z0-9\.]+$/, '');
+  return x.toLowerCase();
 }
 
 function pathSplit(x) {
