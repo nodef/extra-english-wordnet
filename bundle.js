@@ -137,7 +137,7 @@ function scatterPackage(pth, o) {
 
 // Minifies JS file in place.
 function minifyJs(pth, o) {
-  console.log('minify: ', pth);
+  console.log('minify: ', pth, o);
   cp.execSync(BIN+`browserify ${pth} -s ${o.standalone} -o ${pth}.tmp`, {stdio});
   cp.execSync(BIN+`uglifyjs -c -m -o ${pth} ${pth}.tmp`, {stdio});
   cp.execSync(`rm ${pth}.tmp`, {stdio});
@@ -174,7 +174,7 @@ function minifyJson(pth, o) {
 // Minifies package in place.
 function minifyPackage(pth, o) {
   console.log('minifyPackage: ', pth, o);
-  minifyJs(path.join(pth, 'index.js'));
+  minifyJs(path.join(pth, 'index.js'), o);
   minifyReadme(path.join(pth, 'README.md'), o);
   minifyJson(path.join(pth, 'package.json'), o);
 }
@@ -191,7 +191,8 @@ async function main(a) {
     var pth = path.join('scripts', f);
     var tmp = scatterPackage(pth, o);
     cp.execSync('npm publish', {cwd: tmp, stdio});
-    var standalone = toSnakeCase(STANDALONE+'_'+f.replace(/\..*/, ''), '_');
+    var standalone = toSnakeCase(f.replace(/\..*/, ''), '_');
+    standalone = STANDALONE+'_'+standalone;
     minifyPackage(tmp, Object.assign({standalone}, o));
     cp.execSync('npm publish', {cwd: tmp, stdio});
     cp.execSync(`rm -rf ${tmp}`);
