@@ -291,7 +291,8 @@ module.exports =  bundle;
 
 // Run on shell.
 async function main() {
-  var data = await bundle('scripts/index.js', {dependencies: true});
-  fs.writeFileSync('index.js', data);
+  fs.copyFileSync('scripts/DATA.js', 'index.js');
+  // var data = await bundle('scripts/index.js', {dependencies: true});
+  // fs.writeFileSync('index.js', data);
 };
 main();
