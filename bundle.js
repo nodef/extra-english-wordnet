@@ -137,9 +137,11 @@ function scatterPackage(pth, o) {
 
 // Minifies JS file in place.
 function minifyJs(pth, o) {
-  console.log('minify: ', pth, o);
+  console.log('minifyJs: ', pth, o);
+  var s = fs.statSync(pth);
+  var m = s.size<4*1024*1024? '-m':'';
   cp.execSync(BIN+`browserify ${pth} -s ${o.standalone} -o ${pth}.tmp`, {stdio});
-  cp.execSync(BIN+`uglifyjs -c -m -o ${pth} ${pth}.tmp`, {stdio});
+  cp.execSync(BIN+`uglifyjs -c ${m} -o ${pth} ${pth}.tmp`, {stdio});
   cp.execSync(`rm ${pth}.tmp`, {stdio});
 }
 
