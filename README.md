@@ -1,79 +1,66 @@
-WordNet® is a large lexical database of English.
+[WordNet®] is a large lexical database of English. This package includes
+data describing all parts-of-speech in [English WordNet] for use with
+[WordNet container].
+
+> Refer to [WordNet container] for usage examples.<br>
+> All data has been transformed from [WordNet 3.1].
 
 ```bash
-wordnet-lexnumberarray
-wordnet-lexfilenamearray
-wordnet-posnamearray
-wordnet-possymbolarray
-wordnet-expandsynset
-wordnet-minifypointer
-wordnet-expandframe
-wordnet-expandpointer
-wordnet-lexsense
-wordnet-expandword
-wordnet-minifyword
-wordnet-pointernumbermap
-wordnet-lexfilecontentarray
-wordnet-bookdata
-wordnet-minifyframe
-wordnet-posnumbermap
-wordnet-verbframestextarray
-wordnet.book
-wordnet-pointernumberconstants
-wordnet-bookdata.nogloss
-wordnet.lexnumber
-wordnet.index
-wordnet.bag
-wordnet.blob
-wordnet.table
-wordnet.block
-wordnet.bunch
-wordnet.lextype
-wordnet.lextype-tolexid
-wordnet.lextype-tolexnumber
-wordnet.gloss-todefinition
-wordnet.gloss-toexamples
-wordnet.lexnumber-toposnumber
-wordnet.lexnumber-tolexfilenumber
-wordnet-noundatamap
-wordnet-adjectivedatamap
-wordnet-adverbdatamap
-wordnet-verbdatamap
-wordnet-noundatamap.min
-wordnet-verbdatamap.min
-wordnet-adjectivedatamap.min
-wordnet-adjectiveexceptionmap
-wordnet-adverbexceptionlists
-wordnet-pointersymbolmap
-wordnet-adverbdatamap.min
-wordnet-verbarray
-wordnet-adverbdatamap.nogloss
-wordnet-nounexceptionlists
-wordnet-adjectiveexceptionlists
-wordnet-nounexceptionmap
-wordnet-verbexceptionlists
-wordnet-minifysynset
-wordnet-pointernamemap
-wordnet-nounarray
-wordnet-adverbexceptionmap
-wordnet-verbdatamap.nogloss
-wordnet-adjectivedatamap.nogloss
-wordnet-adverbarray
-wordnet-adjectivearray
-wordnet-sensekey
-wordnet-noundatamap.nogloss
-wordnet-verbsentencemap
-wordnet-lextypeconstants
-wordnet-lexfilenumberconstants
-wordnet-verbexceptionmap
-wordnet-noundatamap.nogloss.min
-wordnet-adjectivedatamap.nogloss.min
-wordnet-adverbdatamap.nogloss.min
-wordnet-lexnumberconstants
-wordnet-posnamemap
-wordnet-verbdatamap.nogloss.min
-wordnet-posnumberconstants
-wordnetdictionary
-wordnet.gloss
-wordnetdictionary.nogloss
+const ENGLISH = require('extra-wordnet.english');
+// -> {
+//   table: {name, type, synset, pointers, frames},
+//   blob: {senses, pointers, frames}
+// }
 ```
+
+### reference
+
+| Method                  | Action
+|-------------------------|-------
+| [DATA]                  | Data describing all parts-of-speech in English WordNet for use with WordNet container.
+| [ADJECTIVES]            | Adjective data of English WordNet as Map.
+| [ADJECTIVE_WORDS]       | Adjective words of English WordNet as Array.
+| [ADJECTIVE_EXCEPTIONS]  | Adjective exceptions of English WordNet as Map.
+| [ADVERBS]               | Adverb data of English WordNet as Map.
+| [ADVERB_WORDS]          | Adverb words of English WordNet as Array.
+| [ADVERB_EXCEPTIONS]     | Adverb exceptions of English WordNet as Map.
+| [NOUNS]                 | Noun data of English WordNet as Map.
+| [NOUN_WORDS]            | Noun words of English WordNet as Array.
+| [NOUN_EXCEPTIONS]       | Noun exceptions of English WordNet as Map.
+| [VERBS]                 | Verb data of English WordNet as Map.
+| [VERB_WORDS]            | Verb words of English WordNet as Array.
+| [VERB_EXCEPTIONS]       | Verb exceptions of English WordNet as Map.
+| [VERB_SENTENCES]        | Verb usage sentence list of English WordNet as Map.
+| [VERB_FRAMES]           | Verb frames text of English WordNet as Array (from number).
+
+### references
+
+- Princeton University "About WordNet." [WordNet]. Princeton University. 2010.
+
+<br>
+
+[![nodef](https://merferry.glitch.me/card/extra-wordnet.english.svg)](https://nodef.github.io)
+
+> Browserified, minified version of this package is [extra-wordnet.english.min].
+
+[DATA]: https://github.com/nodef/extra-wordnet.english/wiki/DATA
+[ADJECTIVES]: https://github.com/nodef/extra-wordnet.english/wiki/ADJECTIVES
+[ADJECTIVE_WORDS]: https://github.com/nodef/extra-wordnet.english/wiki/ADJECTIVE_WORDS
+[ADJECTIVE_EXCEPTIONS]: https://github.com/nodef/extra-wordnet.english/wiki/ADJECTIVE_EXCEPTIONS
+[ADVERBS]: https://github.com/nodef/extra-wordnet.english/wiki/ADVERBS
+[ADVERB_WORDS]: https://github.com/nodef/extra-wordnet.english/wiki/ADVERB_WORDS
+[ADVERB_EXCEPTIONS]: https://github.com/nodef/extra-wordnet.english/wiki/ADVERB_EXCEPTIONS
+[NOUNS]: https://github.com/nodef/extra-wordnet.english/wiki/NOUNS
+[NOUN_WORDS]: https://github.com/nodef/extra-wordnet.english/wiki/NOUN_WORDS
+[NOUN_EXCEPTIONS]: https://github.com/nodef/extra-wordnet.english/wiki/NOUN_EXCEPTIONS
+[VERBS]: https://github.com/nodef/extra-wordnet.english/wiki/VERBS
+[VERB_WORDS]: https://github.com/nodef/extra-wordnet.english/wiki/VERB_WORDS
+[VERB_EXCEPTIONS]: https://github.com/nodef/extra-wordnet.english/wiki/VERB_EXCEPTIONS
+[VERB_SENTENCES]: https://github.com/nodef/extra-wordnet.english/wiki/VERB_SENTENCES
+[VERB_FRAMES]: https://github.com/nodef/extra-wordnet.english/wiki/VERB_FRAMES
+[WordNet]: https://wordnet.princeton.edu/wordnet/
+[WordNet®]: https://wordnet.princeton.edu/wordnet/
+[English WordNet]: https://wordnet.princeton.edu/wordnet/
+[WordNet 3.1]: http://wordnetweb.princeton.edu/perl/webwn
+[WordNet container]: https://www.npmjs.com/package/extra-wordnet
+[extra-wordnet.english.min]: https://www.npmjs.com/package/extra-wordnet.english.min
