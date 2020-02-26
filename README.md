@@ -5,7 +5,7 @@ data describing all parts-of-speech in [English WordNet] for use with
 > Refer to [WordNet container] for usage examples.<br>
 > All data has been transformed from [WordNet 3.1].
 
-```bash
+```javascript
 const ENGLISH = require('extra-wordnet.english');
 // -> {
 //   table: {name, type, synset, pointers, frames},

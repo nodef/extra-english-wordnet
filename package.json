@@ -1,6 +1,6 @@
 {
   "name": "extra-wordnet.english",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "WordNet® is a large lexical database of English.",
   "main": "index.js",
   "scripts": {
