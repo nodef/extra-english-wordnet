@@ -1,4 +1,4 @@
-const DATA_ADV = new Map([
+const ADVERBS = new Map([
   [1740, {"lex_filenum":2, "ss_type":"r", "w_cnt":2, "words":[{"word":"a_cappella", "lex_id":0}, {"word":"a_capella", "lex_id":0}], "p_cnt":2, "pointers":[{"pointer_symbol":"\\", "synset_offset":2260096, "pos":"a", "source":2, "target":2}, {"pointer_symbol":"\\", "synset_offset":2260096, "pos":"a", "source":1, "target":1}]}],
   [1885, {"lex_filenum":2, "ss_type":"r", "w_cnt":3, "words":[{"word":"AD", "lex_id":0}, {"word":"A.D.", "lex_id":0}, {"word":"anno_Domini", "lex_id":0}], "p_cnt":0, "pointers":[]}],
   [2029, {"lex_filenum":2, "ss_type":"r", "w_cnt":3, "words":[{"word":"CE", "lex_id":0}, {"word":"C.E.", "lex_id":0}, {"word":"Common_Era", "lex_id":0}], "p_cnt":0, "pointers":[]}],
@@ -3625,4 +3625,4 @@ const DATA_ADV = new Map([
   [519841, {"lex_filenum":2, "ss_type":"r", "w_cnt":2, "words":[{"word":"insufferably", "lex_id":1}, {"word":"unsufferably", "lex_id":0}], "p_cnt":4, "pointers":[{"pointer_symbol":"+", "synset_offset":2444906, "pos":"a", "source":2, "target":2}, {"pointer_symbol":"\\", "synset_offset":2444906, "pos":"a", "source":2, "target":2}, {"pointer_symbol":"+", "synset_offset":2444906, "pos":"a", "source":1, "target":1}, {"pointer_symbol":"\\", "synset_offset":2444906, "pos":"a", "source":1, "target":1}]}],
   [520033, {"lex_filenum":2, "ss_type":"r", "w_cnt":1, "words":[{"word":"voluminously", "lex_id":0}], "p_cnt":4, "pointers":[{"pointer_symbol":"+", "synset_offset":14877, "pos":"a", "source":1, "target":2}, {"pointer_symbol":"+", "synset_offset":1393834, "pos":"a", "source":1, "target":1}, {"pointer_symbol":"\\", "synset_offset":14877, "pos":"a", "source":1, "target":2}, {"pointer_symbol":"\\", "synset_offset":1393834, "pos":"a", "source":1, "target":1}]}]
 ]);
-module.exports = DATA_ADV;
+module.exports = ADVERBS;
