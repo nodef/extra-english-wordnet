@@ -204,6 +204,6 @@ async function main(a) {
   }
   standalone = STANDALONE;
   minifyPackage('.', Object.assign({standalone}, o));
-  cp.execSync('npm publish', {cwd: tmp, stdio});
+  cp.execSync('npm publish', {stdio});
 }
 if(require.main===module) main(process.argv);
