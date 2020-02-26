@@ -1,0 +1,24 @@
+{
+  "name": "extra-wordnet.english",
+  "version": "0.0.1",
+  "description": "WordNet® is a large lexical database of English.",
+  "main": "index.js",
+  "scripts": {
+    "test": "exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nodef/extra-wordnet.english.git"
+  },
+  "keywords": [
+    "extra",
+    "wordnet",
+    "english"
+  ],
+  "author": "wolfram77@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nodef/extra-wordnet.english/issues"
+  },
+  "homepage": "https://github.com/nodef/extra-wordnet.english#readme"
+}
