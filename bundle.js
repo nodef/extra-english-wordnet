@@ -113,7 +113,7 @@ function scatterPackage(pth, o) {
   var readme = path.join(tmp, 'README.md');
   var index = path.join(tmp, 'index'+ext);
   var json = path.join(tmp, 'package.json');
-  o.package = o.package||toSnakeCase(o.name||fil);
+  o.package = o.package||toSnakeCase(fil);
   o.readme = o.readme||o.package;
   downloadReadme(readme, o);
   o.description = o.description||readmeHeading(readme);
@@ -177,49 +177,19 @@ function minifyPackage(pth, o) {
   minifyJson(path.join(pth, 'package.json'), o);
 }
 
-function pkgMinify(o) {
-  console.log('pkgMinify:', o);
-  cp.execSync(BIN+'browserify index.js -s number -o index.web.js', {stdio});
-  cp.execSync(BIN+'uglifyjs -c -m -o index.min.js index.web.js', {stdio});
-  var pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-  var license = fs.readFileSync('LICENSE', 'utf8');
-  var readme = fs.readFileSync('README.md', 'utf8');
-  var index = fs.readFileSync('index.min.js', 'utf8');
-  readme = readme.replace(/^> .*?minified.*$/m, '');
-  readme = readme.replace(/```/,
-    `> This is browserified, minified version of [${PACKAGE}].<br>`+EOL+
-    `> It is exported as global variable **${STANDALONE}**.<br>`+EOL+
-    `> CDN: [unpkg], [jsDelivr].`+EOL+EOL+
-    `[${PACKAGE}]: https://www.npmjs.com/package/${PACKAGE}`+EOL+
-    `[unpkg]: https://unpkg.com/${PACKAGE}.min`+EOL+
-    `[jsDelivr]: https://cdn.jsdelivr.net/npm/${PACKAGE}.min`+EOL+EOL+
-    '```');
-  pkg.name += '.min';
-  pkg.description = pkg.description.replace('.$', ' (browserified, minifined).');
-  pkg.scripts = {test: 'exit'};
-  pkg.devDependencies = undefined;
-  fs.unlinkSync('index.web.js');
-  fs.unlinkSync('index.min.js');
-  var dir = tempy.directory();
-  fs.writeFileSync(path.join(dir, 'index.js'), index);
-  fs.writeFileSync(path.join(dir, 'package.json'), JSON.stringify(pkg, null, 2));
-  fs.writeFileSync(path.join(dir, 'LICENSE'), license);
-  fs.writeFileSync(path.join(dir, 'README.md'), readme);
-  cp.execSync('npm publish', {cwd: dir, stdio});
-  cp.execSync(`rm -rf ${dir}`, {stdio});
-}
-
 // Run on shell.
 async function main(a) {
   console.log('main:', a);
-  console.log({BIN, ORG, PACKAGE});
-  var o = {org: PACKAGE};
+  console.log({BIN, ORG, PACKAGE_ROOT});
+  var o = {org: ORG, package_root: PACKAGE_ROOT};
   for(var f of fs.readdirSync('scripts')) {
     if(path.extname(f)!=='.js') continue;
     if(f.startsWith('_')) continue;
     if(f==='index.js') continue;
-    pkgScatter('scripts/'+f, o);
+    var tmp = scatterPackage(f, o);
+    cp.execSync('npm publish', {cwd: tmp, stdio});
+    cp.execSync(`rm -rf ${tmp}`);
   }
-  pkgMinify();
+  // pkgMinify();
 }
 if(require.main===module) main(process.argv);
