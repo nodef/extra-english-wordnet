@@ -22,7 +22,8 @@ function toSnakeCase(x) {
 function pathSplit(x) {
   var d = path.dirname(x);
   var e = path.extname(x);
-  return [d, x.substring(d.length, x.length-e.length), e];
+  var f = x.substring(d.length, x.length-e.length).replace(/^\//, '');
+  return [d, f, e];
 }
 
 // Get filename.
@@ -114,7 +115,7 @@ function scatterPackage(pth, o) {
   var index = path.join(tmp, 'index'+ext);
   var json = path.join(tmp, 'package.json');
   o.package = o.package||toSnakeCase(fil);
-  o.readme = o.readme||o.package;
+  o.readme = o.readme||fil;
   downloadReadme(readme, o);
   o.description = o.description||readmeHeading(readme);
   scatterReadme(readme, o);
@@ -186,7 +187,8 @@ async function main(a) {
     if(path.extname(f)!=='.js') continue;
     if(f.startsWith('_')) continue;
     if(f==='index.js') continue;
-    var tmp = scatterPackage(f, o);
+    var pth = path.join('scripts', f);
+    var tmp = scatterPackage(pth, o);
     cp.execSync('npm publish', {cwd: tmp, stdio});
     cp.execSync(`rm -rf ${tmp}`);
   }
