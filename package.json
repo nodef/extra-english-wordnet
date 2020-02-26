@@ -1,6 +1,6 @@
 {
   "name": "extra-wordnet.english",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "WordNet® is a large lexical database of English.",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,19 @@
   "keywords": [
     "extra",
     "wordnet",
-    "english"
+    "english",
+    "data",
+    "adjectives",
+    "adverbs",
+    "nouns",
+    "verbs",
+    "words",
+    "senses",
+    "synset",
+    "pointers",
+    "frames",
+    "sentences",
+    "exceptions"
   ],
   "author": "wolfram77@gmail.com",
   "license": "MIT",
