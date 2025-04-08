@@ -42,6 +42,8 @@ const ENGLISH = require('extra-wordnet.english');
 
 > Browserified, minified version of this package is [extra-wordnet.english.min].
 
+![](https://ga-beacon.deno.dev/G-RC63DPBH3P:SH3Eq-NoQ9mwgYeHWxu7cw/github.com/nodef/extra-english-wordnet)
+
 [DATA]: https://github.com/nodef/extra-wordnet.english/wiki/DATA
 [ADJECTIVES]: https://github.com/nodef/extra-wordnet.english/wiki/ADJECTIVES
 [ADJECTIVE_WORDS]: https://github.com/nodef/extra-wordnet.english/wiki/ADJECTIVE_WORDS
